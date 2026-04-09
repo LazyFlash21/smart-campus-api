@@ -1,0 +1,48 @@
+package com.smartcampus.resource;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Part 1: Discovery endpoint.
+ * The @ApplicationPath is "/api/v1", so this class at @Path("/discovery")
+ * is reachable at GET /api/v1/discovery
+ *
+ * The coursework says "GET /api/v1" — we achieve this by registering
+ * the resource at the root path using a dedicated path segment to
+ * avoid Grizzly root-path conflicts.
+ */
+@Path("/discovery")
+public class DiscoveryResource {
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response discover() {
+        Map<String, Object> response = new HashMap<>();
+
+        // API metadata
+        response.put("apiName", "Smart Campus Sensor & Room Management API");
+        response.put("version", "1.0.0");
+        response.put("description", "RESTful API for managing campus rooms and IoT sensors.");
+        response.put("contact", "admin@smartcampus.westminster.ac.uk");
+
+        // HATEOAS-style links to primary resource collections
+        Map<String, String> links = new HashMap<>();
+        links.put("self",    "/api/v1/discovery");
+        links.put("rooms",   "/api/v1/rooms");
+        links.put("sensors", "/api/v1/sensors");
+        response.put("_links", links);
+
+        Map<String, String> status = new HashMap<>();
+        status.put("status", "UP");
+        status.put("timestamp", String.valueOf(System.currentTimeMillis()));
+        response.put("server", status);
+
+        return Response.ok(response).build();
+    }
+}
