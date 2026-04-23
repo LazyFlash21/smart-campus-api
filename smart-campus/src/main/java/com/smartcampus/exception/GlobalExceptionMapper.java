@@ -20,12 +20,12 @@ public class GlobalExceptionMapper implements ExceptionMapper<Throwable> {
     @Override
     public Response toResponse(Throwable exception) {
 
-        // Let JAX-RS WebApplicationExceptions (404, 405, etc.) pass through naturally
+        // Let JAX-RS WebApplicationExceptions 404, 405, etc pass through naturally
         if (exception instanceof WebApplicationException) {
             return ((WebApplicationException) exception).getResponse();
         }
 
-        // Log full stack trace server-side only — never expose to client
+        // Log full stack trace server-side only
         LOGGER.log(Level.SEVERE, "Unhandled exception caught by global mapper", exception);
 
         Map<String, Object> body = new HashMap<>();

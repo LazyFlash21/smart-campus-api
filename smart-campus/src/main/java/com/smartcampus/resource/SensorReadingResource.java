@@ -34,7 +34,7 @@ public class SensorReadingResource {
     public Response addReading(SensorReading reading) {
         Sensor sensor = store.getSensor(sensorId);
 
-        // State constraint: cannot post a reading to a sensor under maintenance
+        // cannot post a reading to a sensor under maintenance
         if ("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())) {
             throw new SensorUnavailableException(
                     "Sensor '" + sensorId + "' is currently under MAINTENANCE and cannot accept new readings."
@@ -60,7 +60,7 @@ public class SensorReadingResource {
         // Persist the reading
         store.addReading(sensorId, reading);
 
-        // Side effect: update the parent sensor's currentValue for data consistency
+        // update the parent sensor's currentValue for data consistency
         sensor.setCurrentValue(reading.getValue());
         store.saveSensor(sensor);
 

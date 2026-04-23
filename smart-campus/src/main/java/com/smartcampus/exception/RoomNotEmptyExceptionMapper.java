@@ -7,9 +7,7 @@ import javax.ws.rs.ext.Provider;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Part 5.1 - Maps RoomNotEmptyException to HTTP 409 Conflict.
- */
+
 @Provider
 public class RoomNotEmptyExceptionMapper implements ExceptionMapper<RoomNotEmptyException> {
 

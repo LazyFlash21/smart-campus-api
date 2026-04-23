@@ -8,15 +8,7 @@ import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Part 1: Discovery endpoint.
- * The @ApplicationPath is "/api/v1", so this class at @Path("/discovery")
- * is reachable at GET /api/v1/discovery
- *
- * The coursework says "GET /api/v1" — we achieve this by registering
- * the resource at the root path using a dedicated path segment to
- * avoid Grizzly root-path conflicts.
- */
+
 @Path("/discovery")
 public class DiscoveryResource {
 

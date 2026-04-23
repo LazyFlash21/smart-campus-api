@@ -49,7 +49,7 @@ public class SensorResource {
                     .build();
         }
 
-        // Referential integrity check: the referenced room must exist
+        // the referenced room must exist
         String roomId = sensor.getRoomId();
         if (roomId == null || roomId.isBlank()) {
             return Response.status(Response.Status.BAD_REQUEST)
@@ -59,7 +59,7 @@ public class SensorResource {
 
         Room room = store.getRoom(roomId);
         if (room == null) {
-            // The payload is syntactically valid but semantically broken - roomId doesn't exist
+
             throw new LinkedResourceNotFoundException(
                     "Cannot register sensor: room with ID '" + roomId + "' does not exist in the system."
             );

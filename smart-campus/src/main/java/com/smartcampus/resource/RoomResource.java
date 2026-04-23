@@ -68,7 +68,7 @@ public class RoomResource {
                     .entity(errorBody("Room not found: " + roomId))
                     .build();
         }
-        // Business rule: cannot delete a room that still has sensors assigned
+        // cannot delete a room that still has sensors assigned
         if (room.getSensorIds() != null && !room.getSensorIds().isEmpty()) {
             throw new RoomNotEmptyException(
                     "Room '" + roomId + "' cannot be deleted: it still has " +

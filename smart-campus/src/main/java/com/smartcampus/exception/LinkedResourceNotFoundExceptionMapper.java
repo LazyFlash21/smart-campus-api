@@ -7,9 +7,7 @@ import javax.ws.rs.ext.Provider;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Part 5.2 - Maps LinkedResourceNotFoundException to HTTP 422 Unprocessable Entity.
- */
+
 @Provider
 public class LinkedResourceNotFoundExceptionMapper implements ExceptionMapper<LinkedResourceNotFoundException> {
 

@@ -28,8 +28,7 @@ public class DataStore {
         return INSTANCE;
     }
 
-    //  Room operations
-
+    //  Room
     public Map<String, Room> getRooms() {
         return rooms;
     }
@@ -46,7 +45,7 @@ public class DataStore {
         return rooms.remove(id) != null;
     }
 
-    //Sensor operations
+    //Sensor
 
     public Map<String, Sensor> getSensors() {
         return sensors;
@@ -57,7 +56,8 @@ public class DataStore {
     }
 
     public void saveSensor(Sensor sensor) {
-        sensors.put(sensor.getId(), sensor);
+        sensors.put(
+                sensor.getId(), sensor);
     }
 
     public boolean deleteSensor(String id) {
@@ -74,7 +74,7 @@ public class DataStore {
         sensorReadings.computeIfAbsent(sensorId, k -> new ArrayList<>()).add(reading);
     }
 
-    //Seed initial demo data
+    //inputs demo data
 
     private void seedData() {
         // Rooms

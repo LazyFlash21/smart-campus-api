@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        // Use package scanning — Jersey finds ALL @Path, @Provider classes automatically
+
         final ResourceConfig rc = new ResourceConfig()
                 .packages("com.smartcampus")
                 .register(JacksonFeature.class);
@@ -24,11 +24,11 @@ public class Main {
         final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
 
 
-        LOGGER.info("  Smart Campus API started successfully!");
+        LOGGER.info("  Smart Campus API started ");
         LOGGER.info("  Rooms   : http://localhost:8080/api/v1/rooms");
         LOGGER.info("  Sensors : http://localhost:8080/api/v1/sensors");
         LOGGER.info("  Discovery: http://localhost:8080/api/v1/discovery");
-        LOGGER.info("  Press ENTER to stop the server...");
+        LOGGER.info("  Press ENTER to stop the server");
 
 
         System.in.read();
