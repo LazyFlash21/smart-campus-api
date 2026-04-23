@@ -37,4 +37,12 @@ public class DiscoveryResource {
 
         return Response.ok(response).build();
     }
+
+    @GET
+    @Path("/test500")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response test500() {
+        throw new RuntimeException("Deliberate test error for demonstration");
+    }
+
 }
